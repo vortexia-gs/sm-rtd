@@ -66,7 +66,7 @@ public void ExplosiveArrows_ArrowTouch(int iEntity, int iOther)
 
 bool ExplosiveArrows_ValidClassname(const char[] sCls)
 {
-	return StrEqual(sCls, "tf_projectile_healing_bolt") || StrEqual(sCls, "tf_projectile_arrow");
+	return StrEqual(sCls, "tf_projectile_healing_bolt") || StrEqual(sCls, "tf_projectile_arrow") || StrEqual(sCls, "tf2c_projectile_arrow");
 }
 
 #undef Damage

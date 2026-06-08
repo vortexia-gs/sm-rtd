@@ -230,13 +230,25 @@ int StripToMelee_SpawnBox(const int client, const int iSlot, const int iHealth, 
 		case TFTeam_Blue:
 		{
 			DispatchKeyValue(iBox, "rendercolor", "150 150 255");
-			SendTEParticleAttached(TEParticles.PickupTrailBlue, iBox);
+			//SendTEParticleAttached(TEParticles.PickupTrailBlue, iBox);
 		}
 
 		case TFTeam_Red:
 		{
 			DispatchKeyValue(iBox, "rendercolor", "255 150 150");
-			SendTEParticleAttached(TEParticles.PickupTrailRed, iBox);
+			//SendTEParticleAttached(TEParticles.PickupTrailRed, iBox);
+		}
+
+		case TFTeam_Green:
+		{
+			DispatchKeyValue(iBox, "rendercolor", "150 255 150");
+			//SendTEParticleAttached(TEParticles.PickupTrailGreen, iBox);
+		}
+
+		case TFTeam_Yellow:
+		{
+			DispatchKeyValue(iBox, "rendercolor", "255 255 150");
+			//SendTEParticleAttached(TEParticles.PickupTrailYellow, iBox);
 		}
 	}
 

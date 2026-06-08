@@ -33,7 +33,7 @@ void ExtraThrowables_SetOnSlot(const int client, const int iSlot, const int iAmo
 
 	switch (GetEntProp(iWeapon, Prop_Send, "m_iItemDefinitionIndex"))
 	{
-		case 44, 648, 222, 812, 833, 1121, 42, 159, 311, 433, 863, 1002, 58, 1083, 1105, 1190:
+		case 44, 648, 222, 812, 833, 1121, 42, 159, 311, 433, 863, 1002, 58, 1083, 1105, 1190, 2006, 2017:
 			ExtraThrowables_SetOnWeapon(client, iWeapon, iAmount);
 	}
 }

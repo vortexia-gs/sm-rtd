@@ -97,7 +97,7 @@ typedef PlayerHurt = function void(const int client, const int iAttacker);
 enum struct PlayerCache
 {
 	int _ClientIndex;
-	int Int[4];
+	int Int[5];
 	float Float[4];
 	Entity _Ent[EntSlot_SIZE];
 	EntCleanup _EntCleanup[EntSlot_SIZE];

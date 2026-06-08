@@ -115,14 +115,20 @@ void EldenStars_OnVoice(const int client)
 	TE_SetupBeamFollow(iOrb, Materials.Laser, Materials.Halo, 5.0, 5.0, 0.0, 5, iColor);
 	TE_SendToAll();
 
-	switch (view_as<TFTeam>(iTeam))
-	{
-		case TFTeam_Red:
-			SendTEParticleLingeringAttachedProxy(TEParticlesLingering.FireballGlowRed, iOrb);
+	//switch (view_as<TFTeam>(iTeam))
+	//{
+	//	case TFTeam_Red:
+	//		SendTEParticleLingeringAttachedProxy(TEParticlesLingering.FireballGlowRed, iOrb);
 
-		case TFTeam_Blue:
-			SendTEParticleLingeringAttachedProxy(TEParticlesLingering.FireballGlowBlue, iOrb);
-	}
+	//	case TFTeam_Blue:
+	//		SendTEParticleLingeringAttachedProxy(TEParticlesLingering.FireballGlowBlue, iOrb);
+
+	//	case TFTeam_Green:
+	//		SendTEParticleLingeringAttachedProxy(TEParticlesLingering.FireballGlowGreen, iOrb);
+
+	//	case TFTeam_Yellow:
+	//		SendTEParticleLingeringAttachedProxy(TEParticlesLingering.FireballGlowYellow, iOrb);
+	//}
 
 	EmitSoundToAll(SOUND_CHANGE, iOrb, _, _, _, _, 200);
 	EmitSoundToAll(SOUND_LOOP, iOrb, SNDCHAN_ITEM, _, _, _, 150);
@@ -203,6 +209,8 @@ public Action Timer_EldenStars_Chip(Handle hTimer, const int iRef)
 
 	static int iColorRed[4] = {255, 50, 50, 255};
 	static int iColorBlue[4] = {50, 50, 255, 255};
+	static int iColorGreen[4] = {50, 255, 50, 255};
+	static int iColorYellow[4] = {255, 255, 50, 255};
 
 	switch (view_as<TFTeam>(iTeam))
 	{
@@ -211,6 +219,12 @@ public Action Timer_EldenStars_Chip(Handle hTimer, const int iRef)
 
 		case TFTeam_Blue:
 			TE_SetupBeamFollow(iChip, Materials.Laser, Materials.Halo, 1.0, 10.0, 5.0, 5, iColorBlue);
+
+		case TFTeam_Green:
+			TE_SetupBeamFollow(iChip, Materials.Laser, Materials.Halo, 1.0, 10.0, 5.0, 5, iColorGreen);
+
+		case TFTeam_Yellow:
+			TE_SetupBeamFollow(iChip, Materials.Laser, Materials.Halo, 1.0, 10.0, 5.0, 5, iColorYellow);
 	}
 
 	TE_SendToAll();

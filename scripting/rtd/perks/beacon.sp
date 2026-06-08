@@ -42,6 +42,8 @@ Action Beacon_Beep(const int client)
 	static int iColorGra[4] = {128,128,128,255};
 	static int iColorRed[4] = {255,75,75,255};
 	static int iColorBlu[4] = {75,75,255,255};
+	static int iColorGrn[4] = {75,255,75,255};
+	static int iColorYlw[4] = {255,255,75,255};
 
 	float fRadius = Cache[client].Radius;
 	int iLaser = Materials.Laser;
@@ -50,13 +52,19 @@ Action Beacon_Beep(const int client)
 	TE_SetupBeamRingPoint(fPos, 10.0, fRadius, iLaser, iHalo, 0, 15, 0.5, 5.0, 0.0, iColorGra, 10, 0);
 	TE_SendToAll();
 
-	if (TF2_GetClientTeam(client) == TFTeam_Red)
+	switch (TF2_GetClientTeam(client))
 	{
-		TE_SetupBeamRingPoint(fPos, 10.0, fRadius, iLaser, iHalo, 0, 10, 0.6, 10.0, 0.5, iColorRed, 10, 0);
-	}
-	else
-	{
-		TE_SetupBeamRingPoint(fPos, 10.0, fRadius, iLaser, iHalo, 0, 10, 0.6, 10.0, 0.5, iColorBlu, 10, 0);
+		case TFTeam_Red:
+			TE_SetupBeamRingPoint(fPos, 10.0, fRadius, iLaser, iHalo, 0, 10, 0.6, 10.0, 0.5, iColorRed, 10, 0);
+
+		case TFTeam_Blue:
+			TE_SetupBeamRingPoint(fPos, 10.0, fRadius, iLaser, iHalo, 0, 10, 0.6, 10.0, 0.5, iColorBlu, 10, 0);
+
+		case TFTeam_Green:
+			TE_SetupBeamRingPoint(fPos, 10.0, fRadius, iLaser, iHalo, 0, 10, 0.6, 10.0, 0.5, iColorGrn, 10, 0);
+
+		case TFTeam_Yellow:
+			TE_SetupBeamRingPoint(fPos, 10.0, fRadius, iLaser, iHalo, 0, 10, 0.6, 10.0, 0.5, iColorYlw, 10, 0);
 	}
 
 	TE_SendToAll();

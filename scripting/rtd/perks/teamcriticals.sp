@@ -21,6 +21,7 @@
 
 #define Boost Int[0]
 #define Red Int[1]
+#define Green Int[4]
 #define Blue Int[2]
 #define MarkForDeath Int[3]
 #define Diameter Float[0]
@@ -53,13 +54,29 @@ public void TeamCriticals_ApplyPerk(const int client, const Perk perk)
 		case TFTeam_Red:
 		{
 			Cache[client].Red = 255;
+			Cache[client].Green = 150;
 			Cache[client].Blue = 150;
 		}
 
 		case TFTeam_Blue:
 		{
 			Cache[client].Red = 150;
+			Cache[client].Green = 150;
 			Cache[client].Blue = 255;
+		}
+
+		case TFTeam_Green:
+		{
+			Cache[client].Red = 150;
+			Cache[client].Green = 255;
+			Cache[client].Blue = 150;
+		}
+
+		case TFTeam_Yellow:
+		{
+			Cache[client].Red = 255;
+			Cache[client].Green = 255;
+			Cache[client].Blue = 150;
 		}
 	}
 
@@ -102,7 +119,7 @@ public Action TeamCriticals_SetTargets(const int client)
 
 	int iColor[4];
 	iColor[0] = Cache[client].Red;
-	iColor[1] = 150;
+	iColor[1] = Cache[client].Green;
 	iColor[2] = Cache[client].Blue;
 	iColor[3] = 255;
 

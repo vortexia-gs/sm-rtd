@@ -90,23 +90,43 @@ void Smite_ApplyPerk(const int client, const Perk perk)
 	float fPos[3];
 	GetClientAbsOrigin(client, fPos);
 
-	int iRed, iBlue;
+	int iRed, iGreen, iBlue;
 	switch (TF2_GetClientTeam(client))
 	{
 		case TFTeam_Red:
 		{
 			iRed = 255;
+			iGreen = 100;
 			iBlue = 100;
-			Cache[client].ElectrocuteEffect = view_as<int>(TEParticles.ElectrocutedRed);
-			SendTEParticleWithPriority(TEParticles.SparkVortexRed, fPos);
+			//Cache[client].ElectrocuteEffect = view_as<int>(TEParticles.ElectrocutedRed);
+			//SendTEParticleWithPriority(TEParticles.SparkVortexRed, fPos);
 		}
 
 		case TFTeam_Blue:
 		{
 			iRed = 100;
+			iGreen = 100;
 			iBlue = 255;
-			Cache[client].ElectrocuteEffect = view_as<int>(TEParticles.ElectrocutedBlue);
-			SendTEParticleWithPriority(TEParticles.SparkVortexBlue, fPos);
+			//Cache[client].ElectrocuteEffect = view_as<int>(TEParticles.ElectrocutedBlue);
+			//SendTEParticleWithPriority(TEParticles.SparkVortexBlue, fPos);
+		}
+
+		case TFTeam_Green:
+		{
+			iRed = 100;
+			iGreen = 255;
+			iBlue = 100;
+			//Cache[client].ElectrocuteEffect = view_as<int>(TEParticles.ElectrocutedGreen);
+			//SendTEParticleWithPriority(TEParticles.SparkVortexGreen, fPos);
+		}
+
+		case TFTeam_Yellow:
+		{
+			iRed = 255;
+			iGreen = 255;
+			iBlue = 100;
+			//Cache[client].ElectrocuteEffect = view_as<int>(TEParticles.ElectrocutedYellow);
+			//SendTEParticleWithPriority(TEParticles.SparkVortexYellow, fPos);
 		}
 	}
 
@@ -132,7 +152,7 @@ void Smite_ApplyPerk(const int client, const Perk perk)
 	fPos[2] += 1024.0;
 	TeleportEntity(iStrike[1], fPos, NULL_VECTOR, NULL_VECTOR);
 
-	int iBeam = ConnectWithBeam(iStrike[1], iStrike[0], iRed, 100, iBlue, 10.0, 4.0, 10.0);
+	int iBeam = ConnectWithBeam(iStrike[1], iStrike[0], iRed, iGreen, iBlue, 10.0, 4.0, 10.0);
 	KILL_ENT_IN(iBeam,0.1);
 }
 
@@ -195,8 +215,8 @@ int Smite_GenerateTicksLeft(const int client)
 
 void Smite_SendElectrocuteParticle(const int client)
 {
-	int iParticle = Cache[client].ElectrocuteEffect;
-	SendTEParticleAttached(view_as<TEParticleId>(iParticle), client);
+	//int iParticle = Cache[client].ElectrocuteEffect;
+	//SendTEParticleAttached(view_as<TEParticleId>(iParticle), client);
 }
 
 #undef SOUND_ELECTRIC_MIST

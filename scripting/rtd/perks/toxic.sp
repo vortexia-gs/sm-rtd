@@ -43,6 +43,12 @@ void Toxic_ApplyPerk(const int client, const Perk perk)
 
 		case TFTeam_Red:
 			Cache[client].SplatIndex = view_as<int>(TEParticles.GasPasserImpactRed);
+
+		case TFTeam_Green:
+			Cache[client].SplatIndex = view_as<int>(TEParticles.GasPasserImpactBlue);
+
+		case TFTeam_Yellow:
+			Cache[client].SplatIndex = view_as<int>(TEParticles.GasPasserImpactRed);
 	}
 
 	EmitSoundToAll(SOUND_TOXIC, client, _, _, _, 0.5, 250);

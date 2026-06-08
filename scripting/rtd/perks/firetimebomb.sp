@@ -170,11 +170,17 @@ int FireTimebomb_SpawnBombHead(const int client)
 
 	switch (TF2_GetClientTeam(client))
 	{
+		case TFTeam_Red:
+			DispatchKeyValue(iBomb, "rendercolor", "255 100 100 255");
+
 		case TFTeam_Blue:
 			DispatchKeyValue(iBomb, "rendercolor", "100 100 255 255");
 
-		case TFTeam_Red:
-			DispatchKeyValue(iBomb, "rendercolor", "255 100 100 255");
+		case TFTeam_Green:
+			DispatchKeyValue(iBomb, "rendercolor", "100 255 100 255");
+
+		case TFTeam_Yellow:
+			DispatchKeyValue(iBomb, "rendercolor", "255 255 100 255");
 	}
 
 	DispatchSpawn(iBomb);

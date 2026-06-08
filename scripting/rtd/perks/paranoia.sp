@@ -103,6 +103,12 @@ public void Paranoia_ApplyPerk(const int client, const Perk perk)
 
 		case TFTeam_Blue:
 			Cache[client].EnemyParticle = view_as<int>(TEParticlesLingering.SpyBodyDisguiseRed);
+
+		case TFTeam_Green:
+			Cache[client].EnemyParticle = view_as<int>(TEParticlesLingering.SpyBodyDisguiseGreen);
+
+		case TFTeam_Yellow:
+			Cache[client].EnemyParticle = view_as<int>(TEParticlesLingering.SpyBodyDisguiseYellow);
 	}
 
 	int iRot = CreateEntityByName("func_rotating");

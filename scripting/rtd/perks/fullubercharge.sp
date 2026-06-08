@@ -38,9 +38,9 @@ public void FullUbercharge_ApplyPerk(const int client, const Perk perk)
 	if (iMedigun <= MaxClients || !IsValidEntity(iMedigun))
 		return;
 
-	char sClass[20];
+	char sClass[32];
 	GetEdictClassname(iMedigun, sClass, sizeof(sClass));
-	if (strcmp(sClass, "tf_weapon_medigun") != 0) // failsafe
+	if (strcmp(sClass, "tf_weapon_medigun") != 0 && strcmp(sClass, "tf2c_weapon_heallauncher") != 0) // failsafe
 		return;
 
 	switch (GetEntProp(iMedigun, Prop_Send, "m_iItemDefinitionIndex"))

@@ -57,14 +57,20 @@ void SunlightSpear_ApplyPerk(const int client, const Perk perk)
 	Cache[client].Speed = perk.GetPrefFloat("speed", 1600.0);
 	Cache[client].Damage = perk.GetPrefFloat("damage", 10.0);
 
-	switch (TF2_GetClientTeam(client))
-	{
-		case TFTeam_Red:
-			Cache[client].ElectrocuteEffect = view_as<int>(TEParticles.ElectrocutedRed);
+	//switch (TF2_GetClientTeam(client))
+	//{
+	//	case TFTeam_Red:
+	//		Cache[client].ElectrocuteEffect = view_as<int>(TEParticles.ElectrocutedRed);
 
-		case TFTeam_Blue:
-			Cache[client].ElectrocuteEffect = view_as<int>(TEParticles.ElectrocutedBlue);
-	}
+	//	case TFTeam_Blue:
+	//		Cache[client].ElectrocuteEffect = view_as<int>(TEParticles.ElectrocutedBlue);
+
+	//	case TFTeam_Green:
+	//		Cache[client].ElectrocuteEffect = view_as<int>(TEParticles.ElectrocutedGreen);
+
+	//	case TFTeam_Yellow:
+	//		Cache[client].ElectrocuteEffect = view_as<int>(TEParticles.ElectrocutedYellow);
+	//}
 
 	Notify.Attack(client);
 }
@@ -148,8 +154,8 @@ public Action SunlightSpear_OnTouch(const int iProjectile, const int iVictim)
 	{
 		iVictimUserId = GetClientUserId(iVictim);
 
-		int iParticle = Cache[iAttacker].ElectrocuteEffect;
-		SendTEParticleAttached(view_as<TEParticleId>(iParticle), iVictim);
+		//int iParticle = Cache[iAttacker].ElectrocuteEffect;
+		//SendTEParticleAttached(view_as<TEParticleId>(iParticle), iVictim);
 
 		if (TF2_GetClientTeam(iAttacker) == TF2_GetClientTeam(iVictim))
 		{

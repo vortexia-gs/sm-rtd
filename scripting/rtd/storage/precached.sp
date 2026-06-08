@@ -260,6 +260,8 @@ enum struct TEParticlesCache
 	TEParticleId IceImpact;
 	TEParticleId PickupTrailBlue;
 	TEParticleId PickupTrailRed;
+	//TEParticleId PickupTrailGreen;
+	//TEParticleId PickupTrailYellow;
 	TEParticleId LootExplosion;
 	TEParticleId ExplosionWooden;
 	TEParticleId ExplosionEmbersOnly;
@@ -269,15 +271,25 @@ enum struct TEParticlesCache
 	TEParticleId SnowBurst;
 	TEParticleId ElectrocutedRed;
 	TEParticleId ElectrocutedBlue;
+	//TEParticleId ElectrocutedGreen;
+	//TEParticleId ElectrocutedYellow;
 	TEParticleId SparkVortexRed;
 	TEParticleId SparkVortexBlue;
+	//TEParticleId SparkVortexGreen;
+	//TEParticleId SparkVortexYellow;
 	TEParticleId PlayerStationarySilhouetteRed;
 	TEParticleId PlayerStationarySilhouetteBlue;
+	//TEParticleId PlayerStationarySilhouetteGreen;
+	//TEParticleId PlayerStationarySilhouetteYellow;
 	TEParticleId SmallPingWithEmbersRed;
 	TEParticleId SmallPingWithEmbersBlue;
+	//TEParticleId SmallPingWithEmbersGreen;
+	//TEParticleId SmallPingWithEmbersYellow;
 	TEParticleId ElectricBurst;
 	TEParticleId HealJoltRed;
 	TEParticleId HealJoltBlue;
+	//TEParticleId HealJoltGreen;
+	//TEParticleId HealJoltYellow;
 	TEParticleId ImpactStars;
 	TEParticleId GreenGoop;
 
@@ -303,6 +315,8 @@ enum struct TEParticlesCache
 		this.IceImpact = this.AsId("xms_icicle_impact");
 		this.PickupTrailBlue = this.AsId("duck_collect_trail_special_blue");
 		this.PickupTrailRed = this.AsId("duck_collect_trail_special_red");
+		//this.PickupTrailGreen = this.AsId("duck_collect_trail_special_green");
+		//this.PickupTrailYellow = this.AsId("duck_collect_trail_special_yellow");
 		this.LootExplosion = this.AsId("mvm_loot_explosion");
 		this.ExplosionWooden = this.AsId("mvm_pow_gold_seq_firework_mid");
 		this.ExplosionEmbersOnly = this.AsId("mvm_tank_destroy_embers");
@@ -312,15 +326,25 @@ enum struct TEParticlesCache
 		this.SnowBurst = this.AsId("xms_snowburst");
 		this.ElectrocutedRed = this.AsId("electrocuted_red");
 		this.ElectrocutedBlue = this.AsId("electrocuted_blue");
+		//this.ElectrocutedGreen = this.AsId("electrocuted_green");
+		//this.ElectrocutedYellow = this.AsId("electrocuted_yellow");
 		this.SparkVortexRed = this.AsId("teleportedin_red");
 		this.SparkVortexBlue = this.AsId("teleportedin_blue");
+		//this.SparkVortexGreen = this.AsId("teleportedin_green");
+		//this.SparkVortexYellow = this.AsId("teleportedin_yellow");
 		this.PlayerStationarySilhouetteRed = this.AsId("player_sparkles_red");
 		this.PlayerStationarySilhouetteBlue = this.AsId("player_sparkles_blue");
+		//this.PlayerStationarySilhouetteGreen = this.AsId("player_sparkles_green");
+		//this.PlayerStationarySilhouetteYellow = this.AsId("player_sparkles_yellow");
 		this.SmallPingWithEmbersBlue = this.AsId("powercore_embers_blue");
 		this.SmallPingWithEmbersRed = this.AsId("powercore_embers_red");
+		//this.SmallPingWithEmbersGreen = this.AsId("powercore_embers_green");
+		//this.SmallPingWithEmbersYellow = this.AsId("powercore_embers_yellow");
 		this.ElectricBurst = this.AsId("utaunt_lightning_impact_electric");
 		this.HealJoltRed = this.AsId("repair_claw_heal_red");
 		this.HealJoltBlue = this.AsId("repair_claw_heal_blue");
+		//this.HealJoltGreen = this.AsId("repair_claw_heal_green");
+		//this.HealJoltYellow = this.AsId("repair_claw_heal_yellow");
 		this.ImpactStars = this.AsId("taunt_headbutt_impact_stars");
 		this.GreenGoop = this.AsId("spell_skeleton_goop_green");
 	}
@@ -336,6 +360,8 @@ enum struct TEParticlesLingeringCache
 	TEParticleLingeringId BurningBody;
 	TEParticleLingeringId GlowRed;
 	TEParticleLingeringId GlowBlue;
+	TEParticleLingeringId GlowGreen;
+	TEParticleLingeringId GlowYellow;
 	TEParticleLingeringId VortexRed;
 	TEParticleLingeringId VortexBlue;
 	TEParticleLingeringId ElectricDischargePurple;
@@ -352,6 +378,8 @@ enum struct TEParticlesLingeringCache
 	TEParticleLingeringId FireballGlowBlue;
 	TEParticleLingeringId SpyBodyDisguiseRed;
 	TEParticleLingeringId SpyBodyDisguiseBlue;
+	TEParticleLingeringId SpyBodyDisguiseGreen;
+	TEParticleLingeringId SpyBodyDisguiseYellow;
 
 	TEParticleLingeringId AsId(const char[] sEffectName)
 	{
@@ -368,6 +396,8 @@ enum struct TEParticlesLingeringCache
 		this.BurningBody = this.AsId("burningplayer_red");
 		this.GlowRed = this.AsId("utaunt_tarotcard_red_glow");
 		this.GlowBlue = this.AsId("utaunt_tarotcard_blue_glow");
+		this.GlowGreen = this.AsId("utaunt_tarotcard_green_glow");
+		this.GlowYellow = this.AsId("utaunt_tarotcard_yellow_glow");
 		this.VortexRed = this.AsId("utaunt_tarotcard_red_wind");
 		this.VortexBlue = this.AsId("utaunt_tarotcard_blue_wind");
 		this.ElectricDischargePurple = this.AsId("utaunt_electricity_purple_discharge");
@@ -384,6 +414,8 @@ enum struct TEParticlesLingeringCache
 		this.FireballGlowBlue = this.AsId("spell_fireball_small_glow_blue");
 		this.SpyBodyDisguiseRed = this.AsId("spy_start_disguise_red");
 		this.SpyBodyDisguiseBlue = this.AsId("spy_start_disguise_blue");
+		this.SpyBodyDisguiseGreen = this.AsId("spy_start_disguise_green");
+		this.SpyBodyDisguiseYellow = this.AsId("spy_start_disguise_yellow");
 	}
 }
 

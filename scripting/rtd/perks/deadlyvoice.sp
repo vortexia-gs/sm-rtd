@@ -25,8 +25,8 @@
 
 static char g_sDeadlyVoiceParticles[][] = {
 	"default", "default",
-	"bombinomicon_burningdebris",
-	"bombinomicon_burningdebris_halloween"
+	"bombinomicon_burningdebris", "bombinomicon_burningdebris_halloween",
+	"bombinomicon_burningdebris_halloween", "bombinomicon_burningdebris"
 };
 
 DEFINE_CALL_APPLY(DeadlyVoice)

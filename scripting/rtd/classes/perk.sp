@@ -66,7 +66,7 @@ methodmap Perk < StringMap
 		StringMap map = new StringMap();
 		map.SetValue("m_WeaponClass", new ArrayList(127));
 		map.SetValue("m_Tags", new ArrayList(32));
-		map.SetValue("m_ActiveCount", new ArrayList(1, 4));
+		map.SetValue("m_ActiveCount", new ArrayList(1, 6));
 		map.SetValue("m_Class", 511);
 
 		Perk perk = view_as<Perk>(map);
@@ -546,7 +546,7 @@ methodmap Perk < StringMap
 	public bool IsAptForClassOf(int client)
 	{
 		// TF2 class enum offsets numbered accoring to their order in-game
-		static int iClassConverter[10] = {0, 1, 8, 2, 4, 7, 5, 3, 9, 6};
+		static int iClassConverter[11] = {0, 1, 8, 2, 4, 7, 5, 3, 9, 6, 10};
 
 		int iClass = iClassConverter[TF2_GetPlayerClass(client)];
 		return view_as<bool>(this.Class & (1 << --iClass));

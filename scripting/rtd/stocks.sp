@@ -404,7 +404,14 @@ stock float GetCaptureValue(const int client)
 	// float instead of int so the return value can be used in a TF2Attrib call
 	float fValue = 1.0;
 
-	fValue += view_as<int>(TF2_GetPlayerClass(client) == TFClass_Scout);
+	switch (TF2_GetPlayerClass(client))
+	{
+		case TFClass_Scout:
+			fValue = 2.0;
+
+		case TFClass_Civilian:
+			fValue = 5.0;
+	}
 
 	for (int iSlot = 0; iSlot < 5; iSlot++)
 	{
@@ -1267,16 +1274,13 @@ stock float GetBaseSpeed(const int client)
 		case TFClass_Soldier:
 			return 240.0;
 
-		case TFClass_DemoMan:
+		case TFClass_DemoMan | TFClass_Civilian:
 			return 280.0;
 
 		case TFClass_Heavy:
 			return 230.0;
 
-		case TFClass_Medic:
-			return 320.0;
-
-		case TFClass_Spy:
+		case TFClass_Medic | TFClass_Spy:
 			return 320.0;
 	}
 
@@ -1558,12 +1562,24 @@ stock void Homing_SmoothTurn(float fTargetPos[3], float fRocketPos[3], int iProj
 
 stock bool Homing_AptClass(const char[] sClass)
 {
-	if (strncmp(sClass, "tf_projectile_", 14))
-		return false;
-
-	return !strcmp(sClass[14], "rocket")
-		|| !strcmp(sClass[14], "arrow")
-		|| !strcmp(sClass[14], "flare")
-		|| !strcmp(sClass[14], "energy_ball")
-		|| !strcmp(sClass[14], "healing_bolt");
+	if (!strncmp(sClass, "tf_projectile_", 14))
+	{
+		return !strcmp(sClass[14], "rocket")
+			|| !strcmp(sClass[14], "arrow")
+			|| !strcmp(sClass[14], "flare")
+			|| !strcmp(sClass[14], "energy_ball")
+			|| !strcmp(sClass[14], "healing_bolt");
+	}
+	if (!strncmp(sClass, "tf2c_projectile_", 16))
+	{
+		return !strcmp(sClass[16], "arrow")
+			|| !strcmp(sClass[16], "brick")
+			|| !strcmp(sClass[16], "coil")
+			|| !strcmp(sClass[16], "dart");
+	}
+	if (!strncmp(sClass, "tf_weapon_grenade_mirv_projectile", 33) || !strncmp(sClass, "tf_weapon_grenade_mirv_bomb", 27))
+	{
+		return true;
+	}
+	return false;
 }

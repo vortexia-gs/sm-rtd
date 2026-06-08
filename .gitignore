@@ -1,15 +1,20 @@
 *pass*
 
 scripting/compiled/
-scripting/spcomp
+scripting/compile.dat
 
 !scripting/include
 scripting/include/*
 !scripting/include/rtd2.inc
+!scripting/include/tf2c_defs.inc
 
+compile.exe
 compile.sh
+spcomp
+spcomp.exe
+spcomp64
+spcomp64.exe
 
 *.zip
-.exrc
 .vscode
 venv

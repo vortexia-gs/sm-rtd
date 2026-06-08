@@ -1,13 +1,6 @@
-> # [DOWNLOAD](https://github.com/Phil25/RTD/releases/latest)
-> * [Discord](https://discord.gg/sUgJE278QS)
-> * [AlliedModders Thread](https://forums.alliedmods.net/showthread.php?t=278579)
-> * [Balance Spreadsheet](https://docs.google.com/spreadsheets/d/1LH_-Lk5Uho-i_rpefjpn4mBGlLWrel_5rsBtLC-RVvs/edit?usp=sharing)
-> * [Perk List](https://github.com/Phil25/RTD/wiki/perk-list)
-> * [Commands](https://github.com/Phil25/RTD/wiki/commands)
-> * [ConVars](https://github.com/Phil25/RTD/wiki/convars)
-> * [Customizing Perks](https://github.com/Phil25/RTD/wiki/customizing-perks)
-> * [Changelog](https://github.com/Phil25/RTD/wiki/changelog)
-> * [API Documentation](https://github.com/Phil25/RTD/wiki/api-documentation)
+# Vortexia Edit
+
+This plugin was edited for use in the Vortexia servers. Patches were made to add support for [Team Fortress 2 Classified](https://tf2classified.com/), but not everything is fully functional.
 
 # Roll The Dice Revamped
 

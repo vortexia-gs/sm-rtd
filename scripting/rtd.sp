@@ -21,6 +21,7 @@
 #include <sdktools>
 #include <sdkhooks>
 #include <tf2_stocks>
+#include <tf2c_defs>
 #include <tf2attributes>
 
 #undef REQUIRE_PLUGIN
@@ -41,9 +42,9 @@
 #define FREEZECAM_DELAY		2.0
 #define FREEZECAM_DURATION	5.0
 
-#if defined _updater_included
-#define UPDATE_URL		"https://phil25.github.io/RTD/update.txt"
-#endif
+//#if defined _updater_included
+//#define UPDATE_URL		"https://phil25.github.io/RTD/update.txt"
+//#endif
 
 //#define DEBUG // log extra messages
 #define DEBUG_VECTOR3(%1,%2) \
@@ -58,7 +59,7 @@ public Plugin myinfo = {
 	url = "https://forums.alliedmods.net/showthread.php?t=278579"
 };
 
-static char g_sTeamColors[][] = {"\x07B2B2B2", "\x07B2B2B2", "\x07FF4040", "\x0799CCFF"};
+static char g_sTeamColors[][] = {"\x07B2B2B2", "\x07B2B2B2", "\x07FF4040", "\x0799CCFF", "\x079AFF9A", "\x07FFB400"};
 
 #if defined _updater_included
 bool g_bPluginUpdater = false;
@@ -79,6 +80,7 @@ int g_iCorePerks = 0;
 bool g_bIsGameArena = false;
 bool g_bIsGameMedieval = false;
 int g_iLastPerkTime = -1;
+//bool g_bIsTF2C = false;
 
 Rollers g_hRollers = null;
 int g_iActiveEntitySpawnedSubscribers = 0;
@@ -111,11 +113,13 @@ public APLRes AskPluginLoad2(Handle hMyself, bool bLate, char[] sError, int iErr
 	sGame[0] = '\0';
 
 	GetGameFolderName(sGame, sizeof(sGame));
-	if (!StrEqual(sGame, "tf"))
+	if (!StrEqual(sGame, "tf") && !StrEqual(sGame, "tf2classified"))
 	{
 		Format(sError, iErrorSize, CONS_PREFIX ... " This plugin only works for Team Fortress 2.");
 		return APLRes_Failure;
 	}
+
+	//g_bIsTF2C = StrEqual(sGame, "tf2classified");
 
 	CreateNatives();
 	RegPluginLibrary("RollTheDice2");
@@ -1805,7 +1809,8 @@ void RTDPrintAllExcept(const int client, const char[] sFormat, any ...)
 void DisplayPerkTimeFrame(const int client)
 {
 	int iTeam = GetClientTeam(client);
-	int iRed = (iTeam == 2) ? 255 : 32;
+	int iRed = (iTeam == 2 || iTeam == 5) ? 255 : 32;
+	int iGreen = (iTeam == 4 || iTeam == 5) ? 255 : 32;
 	int iBlue = (iTeam == 3) ? 255 : 32;
 
 	int iRemainingTime = g_hRollers.GetEndRollTime(client) - GetTime();
@@ -1815,7 +1820,7 @@ void DisplayPerkTimeFrame(const int client)
 	char sPerkName[RTD2_MAX_PERK_NAME_LENGTH];
 	g_hRollers.GetPerk(client).GetName(sPerkName, sizeof(sPerkName));
 
-	SetHudTextParams(g_fCvarTimerPosX, g_fCvarTimerPosY, 1.0, iRed, 32, iBlue, 255);
+	SetHudTextParams(g_fCvarTimerPosX, g_fCvarTimerPosY, 1.0, iRed, iGreen, iBlue, 255);
 
 	if (iAddedTime == 0)
 	{

@@ -121,20 +121,32 @@ void Invisibility_Blink(const int client)
 
 	fPos[2] += 26.0;
 
-	switch (TF2_GetClientTeam(client))
-	{
-		case TFTeam_Red:
-		{
-			SendTEParticleWithPriorityTo(client, TEParticles.SmallPingWithEmbersRed, fPos);
-			SendTEParticleAttached(TEParticles.PlayerStationarySilhouetteRed, client);
-		}
+	//switch (TF2_GetClientTeam(client))
+	//{
+	//	case TFTeam_Red:
+	//	{
+	//		SendTEParticleWithPriorityTo(client, TEParticles.SmallPingWithEmbersRed, fPos);
+	//		SendTEParticleAttached(TEParticles.PlayerStationarySilhouetteRed, client);
+	//	}
 
-		case TFTeam_Blue:
-		{
-			SendTEParticleWithPriorityTo(client, TEParticles.SmallPingWithEmbersBlue, fPos);
-			SendTEParticleAttached(TEParticles.PlayerStationarySilhouetteBlue, client);
-		}
-	}
+	//	case TFTeam_Blue:
+	//	{
+	//		SendTEParticleWithPriorityTo(client, TEParticles.SmallPingWithEmbersBlue, fPos);
+	//		SendTEParticleAttached(TEParticles.PlayerStationarySilhouetteBlue, client);
+	//	}
+
+	//	case TFTeam_Green:
+	//	{
+	//		SendTEParticleWithPriorityTo(client, TEParticles.SmallPingWithEmbersGreen, fPos);
+	//		SendTEParticleAttached(TEParticles.PlayerStationarySilhouetteGreen, client);
+	//	}
+
+	//	case TFTeam_Yellow:
+	//	{
+	//		SendTEParticleWithPriorityTo(client, TEParticles.SmallPingWithEmbersYellow, fPos);
+	//		SendTEParticleAttached(TEParticles.PlayerStationarySilhouetteYellow, client);
+	//	}
+	//}
 
 	EmitSoundToAll(SOUND_PING, client);
 

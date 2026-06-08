@@ -46,29 +46,43 @@ public void TeamAutoheal_ApplyPerk(const int client, const Perk perk)
 	Cache[client].RangeSquared = fRange * fRange;
 	Cache[client].Healing.Reset();
 
-	TEParticleLingeringId eHealAura = TEParticlesLingering.GlowRed;
+	//TEParticleLingeringId eHealAura = TEParticlesLingering.GlowRed;
 
 	switch (TF2_GetClientTeam(client))
 	{
 		case TFTeam_Red:
 		{
 			Cache[client].Team = view_as<int>(TFTeam_Red);
-			Cache[client].Particle = view_as<int>(TEParticles.HealJoltRed);
-			eHealAura = TEParticlesLingering.GlowRed;
+			//Cache[client].Particle = view_as<int>(TEParticles.HealJoltRed);
+			//eHealAura = TEParticlesLingering.GlowRed;
 		}
 
 		case TFTeam_Blue:
 		{
 			Cache[client].Team = view_as<int>(TFTeam_Blue);
-			Cache[client].Particle = view_as<int>(TEParticles.HealJoltBlue);
-			eHealAura = TEParticlesLingering.GlowBlue;
+			//Cache[client].Particle = view_as<int>(TEParticles.HealJoltBlue);
+			//eHealAura = TEParticlesLingering.GlowBlue;
+		}
+
+		case TFTeam_Green:
+		{
+			Cache[client].Team = view_as<int>(TFTeam_Green);
+			//Cache[client].Particle = view_as<int>(TEParticles.HealJoltGreen);
+			//eHealAura = TEParticlesLingering.GlowGreen;
+		}
+
+		case TFTeam_Yellow:
+		{
+			Cache[client].Team = view_as<int>(TFTeam_Yellow);
+			//Cache[client].Particle = view_as<int>(TEParticles.HealJoltYellow);
+			//eHealAura = TEParticlesLingering.GlowYellow;
 		}
 	}
 
 	int iProxy = CreateProxy(client);
 	if (iProxy > MaxClients)
 	{
-		SendTEParticleLingeringAttachedProxyExcept(eHealAura, iProxy, client);
+		//SendTEParticleLingeringAttachedProxyExcept(eHealAura, iProxy, client);
 		Cache[client].SetEnt(Effect, iProxy);
 	}
 
@@ -105,7 +119,7 @@ Action TeamAutoheal_TeamTick(const int client)
 	fClientPos[2] += 60.0; // roughly player center
 
 	float fPos[3], fDir[2];
-	TEParticleId eParticleId = view_as<TEParticleId>(Cache[client].Particle);
+	//TEParticleId eParticleId = view_as<TEParticleId>(Cache[client].Particle);
 
 	for (int i = 0; i < Cache[client].EffectCount; ++i)
 	{
@@ -115,7 +129,7 @@ Action TeamAutoheal_TeamTick(const int client)
 		fDir[1] = GetRandomFloat(0.0, 2.0 * 3.1415);
 		GetPointOnSphere(fClientPos, fDir, fRadius, fPos);
 
-		SendTEParticle(eParticleId, fPos);
+		//SendTEParticle(eParticleId, fPos);
 	}
 
 	return Plugin_Continue;
@@ -129,7 +143,7 @@ void TeamAutoheal_Tick(const int client, const int iTarget)
 	if (bShouldHeal)
 	{
 		SetEntityHealth(iTarget, MinInt(iCurHealth + Cache[client].Health, Shared[iTarget].MaxHealth));
-		SendTEParticleAttached(view_as<TEParticleId>(Cache[client].Particle), iTarget, GetRandomInt(0, 22));
+		//SendTEParticleAttached(view_as<TEParticleId>(Cache[client].Particle), iTarget, GetRandomInt(0, 22));
 
 		if (!Cache[client].Healing.Test(iTarget))
 			EmitSoundToAll(SOUND_HEALING, iTarget, SNDCHAN_AUTO, _, _, 0.35);

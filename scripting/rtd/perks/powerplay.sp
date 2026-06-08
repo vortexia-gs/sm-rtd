@@ -26,6 +26,7 @@
 #define MeleeFlags Int[0]
 #define ColorRed Int[1]
 #define ColorBlue Int[2]
+#define ColorGreen Int[4]
 #define BaseSpeed Int[3]
 #define CurrentSpeed Float[0]
 #define EnableLegacy Float[0] = -1.0
@@ -160,6 +161,7 @@ void PowerPlay_Apply(const int client)
 			SendTEParticleLingeringAttachedProxyExcept(TEParticlesLingering.GlowRed, iEffect, client);
 
 			Cache[client].ColorRed = 255;
+			Cache[client].ColorGreen = 150;
 			Cache[client].ColorBlue = 150;
 		}
 
@@ -168,7 +170,26 @@ void PowerPlay_Apply(const int client)
 			SendTEParticleLingeringAttachedProxyExcept(TEParticlesLingering.GlowBlue, iEffect, client);
 
 			Cache[client].ColorRed = 150;
+			Cache[client].ColorGreen = 150;
 			Cache[client].ColorBlue = 255;
+		}
+
+		case TFTeam_Green:
+		{
+			SendTEParticleLingeringAttachedProxyExcept(TEParticlesLingering.GlowGreen, iEffect, client);
+
+			Cache[client].ColorRed = 150;
+			Cache[client].ColorGreen = 255;
+			Cache[client].ColorBlue = 150;
+		}
+
+		case TFTeam_Yellow:
+		{
+			SendTEParticleLingeringAttachedProxyExcept(TEParticlesLingering.GlowYellow, iEffect, client);
+
+			Cache[client].ColorRed = 255;
+			Cache[client].ColorGreen = 255;
+			Cache[client].ColorBlue = 150;
 		}
 	}
 
@@ -231,7 +252,7 @@ public void PowerPlay_OnGlowUpdate(const int client)
 
 	int iColor[4];
 	iColor[0] = Cache[client].ColorRed;
-	iColor[1] = 150;
+	iColor[1] = Cache[client].ColorGreen;
 	iColor[2] = Cache[client].ColorBlue;
 	iColor[3] = RoundToNearest(Cosine(GetGameTime() * 12.0) * 60.0 + 195.0);
 

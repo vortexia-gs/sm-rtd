@@ -36,14 +36,20 @@ public void Autoheal_ApplyPerk(const int client, const Perk perk)
 	Cache[client].Health = perk.GetPrefCell("health", 4);
 	Cache[client].Healing = false;
 
-	switch (TF2_GetClientTeam(client))
-	{
-		case TFTeam_Red:
-			Cache[client].Particle = view_as<int>(TEParticles.HealJoltRed);
+	//switch (TF2_GetClientTeam(client))
+	//{
+	//	case TFTeam_Red:
+	//		Cache[client].Particle = view_as<int>(TEParticles.HealJoltRed);
 
-		case TFTeam_Blue:
-			Cache[client].Particle = view_as<int>(TEParticles.HealJoltBlue);
-	}
+	//	case TFTeam_Blue:
+	//		Cache[client].Particle = view_as<int>(TEParticles.HealJoltBlue);
+
+	//	case TFTeam_Green:
+	//		Cache[client].Particle = view_as<int>(TEParticles.HealJoltGreen);
+
+	//	case TFTeam_Yellow:
+	//		Cache[client].Particle = view_as<int>(TEParticles.HealJoltYellow);
+	//}
 
 	Cache[client].Repeat(perk.GetPrefFloat("rate", 0.1), Autoheal_Tick);
 }
@@ -61,7 +67,7 @@ Action Autoheal_Tick(const int client)
 	if (bShouldHeal)
 	{
 		SetEntityHealth(client, MinInt(iCurHealth + Cache[client].Health, Shared[client].MaxHealth));
-		SendTEParticleAttached(view_as<TEParticleId>(Cache[client].Particle), client, GetRandomInt(0, 22));
+		//SendTEParticleAttached(view_as<TEParticleId>(Cache[client].Particle), client, GetRandomInt(0, 22));
 
 		if (!Cache[client].Healing)
 			EmitSoundToAll(SOUND_HEALING, client, SNDCHAN_AUTO, _, _, 0.35);
