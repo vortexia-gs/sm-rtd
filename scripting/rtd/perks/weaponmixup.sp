@@ -41,30 +41,30 @@ public void WeaponMixup_RemovePerk(const int client, const RTDRemoveReason eRemo
 	// If Heavy was revved up, this should fix it lingering
 	TF2_RemoveCondition(client, TFCond_Slowed);
 
-	for (int i = 0; i < 3; ++i)
-	{
-		int iWeapon = GetPlayerWeaponSlot(client, i);
-		if (iWeapon <= MaxClients || !IsValidEntity(iWeapon))
-			continue;
+	//for (int i = 0; i < 3; ++i)
+	//{
+	//	int iWeapon = GetPlayerWeaponSlot(client, i);
+	//	if (iWeapon <= MaxClients || !IsValidEntity(iWeapon))
+	//		continue;
 
-		TF2Attrib_RemoveByDefIndex(iWeapon, Attribs.DeploySpeed);
-		TF2Attrib_RemoveByDefIndex(iWeapon, Attribs.ReloadSpeed);
-		TF2Attrib_RemoveByDefIndex(iWeapon, Attribs.SilentRev);
-	}
+	//	TF2Attrib_RemoveByDefIndex(iWeapon, Attribs.DeploySpeed);
+	//	TF2Attrib_RemoveByDefIndex(iWeapon, Attribs.ReloadSpeed);
+	//	TF2Attrib_RemoveByDefIndex(iWeapon, Attribs.SilentRev);
+	//}
 }
 
 void WeaponMixup_Apply(const int client)
 {
-	for (int i = 0; i < 3; ++i)
-	{
-		int iWeapon = GetPlayerWeaponSlot(client, i);
-		if (iWeapon <= MaxClients || !IsValidEntity(iWeapon))
-			continue;
+	//for (int i = 0; i < 3; ++i)
+	//{
+	//	int iWeapon = GetPlayerWeaponSlot(client, i);
+	//	if (iWeapon <= MaxClients || !IsValidEntity(iWeapon))
+	//		continue;
 
-		TF2Attrib_SetByDefIndex(iWeapon, Attribs.DeploySpeed, 0.5);
-		TF2Attrib_SetByDefIndex(iWeapon, Attribs.ReloadSpeed, 0.1);
-		TF2Attrib_SetByDefIndex(iWeapon, Attribs.SilentRev, 1.0);
-	}
+	//	TF2Attrib_SetByDefIndex(iWeapon, Attribs.DeploySpeed, 0.5);
+	//	TF2Attrib_SetByDefIndex(iWeapon, Attribs.ReloadSpeed, 0.1);
+	//	TF2Attrib_SetByDefIndex(iWeapon, Attribs.SilentRev, 1.0);
+	//}
 }
 
 public void WeaponMixup_OnDroppedWeaponSpawn(const int client, const int iEnt)

@@ -22,7 +22,6 @@
 #include <sdkhooks>
 #include <tf2_stocks>
 #include <tf2c_defs>
-#include <tf2attributes>
 
 #undef REQUIRE_PLUGIN
 #tryinclude <updater>
@@ -666,7 +665,10 @@ public Action Listener_Sound(int clients[MAXPLAYERS], int& iLen, char sSample[PL
 	if (!IsValidClient(iEnt))
 		return Plugin_Continue;
 
-	return (Stocks_Sound(iEnt, sSample) && Events.Sound(iEnt, sSample)) ? Plugin_Continue : Plugin_Stop;
+	if (!Stocks_Sound(iEnt, sSample) || !Events.Sound(iEnt, sSample))
+		return Plugin_Stop;
+
+	return (Events.SoundEx(iEnt, sSample, iChannel, fVol, iLevel, iPitch)) ? Plugin_Changed : Plugin_Continue;
 }
 
 public Action Event_PlayerDeath(Event hEvent, const char[] sEventName, bool dontBroadcast)

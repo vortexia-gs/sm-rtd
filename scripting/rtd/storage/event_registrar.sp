@@ -8,6 +8,7 @@ typedef ERAttackCritCheck = function bool(const int client, const int iWeapon);
 typedef ERPlayerRunCmd = function bool(const int client, int& iButtons, float fVel[3], float fAng[3]);
 typedef ERUberchargeDeployed = function void(const int client, const int iTarget);
 typedef ERSound = function bool(const int client, const char[] sSound);
+typedef ERSoundEx = function bool(const int client, const char[] sSound, int& iChannel, float& fVol, int& iLevel, int& iPitch);
 
 public int Retriever_OwnerEntity(const int iEnt)
 {
@@ -50,6 +51,7 @@ enum struct EventRegistrar
 	ArrayList _OnResupply;
 	ArrayList _OnVoice;
 	ArrayList _OnSound;
+	ArrayList _OnSoundEx;
 
 	ArrayList _OnEntitySpawnedSubscribers;
 
@@ -67,6 +69,7 @@ enum struct EventRegistrar
 		this._OnResupply = new ArrayList();
 		this._OnVoice = new ArrayList();
 		this._OnSound = new ArrayList();
+		this._OnSoundEx = new ArrayList();
 
 		this._OnEntitySpawnedSubscribers = new ArrayList();
 	}
@@ -85,6 +88,7 @@ enum struct EventRegistrar
 		this._CleanupCallbackArray(this._OnResupply);
 		this._CleanupCallbackArray(this._OnVoice);
 		this._CleanupCallbackArray(this._OnSound);
+		this._CleanupCallbackArray(this._OnSoundEx);
 
 		delete this._OnEntitySpawnedSubscribers;
 	}
@@ -568,6 +572,50 @@ enum struct EventRegistrar
 		}
 
 		return bAllow;
+	}
+
+	void OnSoundEx(const Perk perk, ERSoundEx hCallback)
+	{
+		DataPack hData = new DataPack();
+		hData.WriteCell(perk);
+		hData.WriteFunction(hCallback);
+
+		this._OnSoundEx.Push(hData);
+	}
+
+	bool SoundEx(const int client, const char[] sSound, int& iChannel, float& fVol, int& iLevel, int& iPitch)
+	{
+		Perk perk = g_hRollers.GetPerk(client);
+		if (perk == null)
+			return false;
+
+		for (int i = 0; i < this._OnSoundEx.Length; ++i)
+		{
+			DataPack hData = this._OnSoundEx.Get(i);
+			hData.Reset();
+
+			if (perk != hData.ReadCell())
+				continue;
+
+			Call_StartFunction(INVALID_HANDLE, hData.ReadFunction());
+			Call_PushCell(client);
+			Call_PushString(sSound);
+			Call_PushCellRef(iChannel);
+			Call_PushFloatRef(fVol);
+			Call_PushCellRef(iLevel);
+			Call_PushCellRef(iPitch);
+
+			bool bResult;
+			Call_Finish(bResult);
+
+			// We can return right away, `Events.OnSoundEx()` does not support subscribing to
+			// non-roller players (it shouldn't, calls could get a bit too expensive), this is run
+			// for a single player and every player will only ever have a single perk active.
+			if (bResult)
+				return true;
+		}
+
+		return false;
 	}
 }
 

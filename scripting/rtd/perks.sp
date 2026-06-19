@@ -16,16 +16,16 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-//-------[ PERK INCLUDE ]-------------------[ ID ]--[ '$' = TF2Attribs required | '—' = Potential issues ]
+//-------[ PERK INCLUDE ]-------------------[ ID ]--[ '—' = Potential issues ]
 
-#include "rtd/perks/godmode.sp"             //  0 $
+#include "rtd/perks/godmode.sp"             //  0
 #include "rtd/perks/toxic.sp"               //  1
 #include "rtd/perks/luckysandvich.sp"       //  2
-#include "rtd/perks/increasedspeed.sp"      //  3 $
+#include "rtd/perks/increasedspeed.sp"      //  3 —
 #include "rtd/perks/noclip.sp"              //  4
-#include "rtd/perks/lowgravity.sp"          //  5 $
+#include "rtd/perks/lowgravity.sp"          //  5
 #include "rtd/perks/fullubercharge.sp"      //  6
-#include "rtd/perks/invisibility.sp"        //  7 $
+#include "rtd/perks/invisibility.sp"        //  7 —
 #include "rtd/perks/infinitecloak.sp"       //  8
 #include "rtd/perks/criticals.sp"           //  9
 #include "rtd/perks/infiniteammo.sp"        // 10
@@ -34,8 +34,8 @@
 #include "rtd/perks/homingprojectiles.sp"   // 13
 #include "rtd/perks/fullriflecharge.sp"     // 14 —
 #include "rtd/perks/explode.sp"             // 15
-#include "rtd/perks/snail.sp"               // 16 $
-#include "rtd/perks/frozen.sp"              // 17 $
+#include "rtd/perks/snail.sp"               // 16 —
+#include "rtd/perks/frozen.sp"              // 17
 #include "rtd/perks/timebomb.sp"            // 18
 #include "rtd/perks/ignition.sp"            // 19
 #include "rtd/perks/lowhealth.sp"           // 20
@@ -51,8 +51,8 @@
 #include "rtd/perks/spawndispenser.sp"      // 30
 #include "rtd/perks/infinitejump.sp"        // 31
 #include "rtd/perks/powerfulhits.sp"        // 32 $
-#include "rtd/perks/bighead.sp"             // 33 $
-#include "rtd/perks/tinymann.sp"            // 34 $
+#include "rtd/perks/bighead.sp"             // 33
+#include "rtd/perks/tinymann.sp"            // 34
 #include "rtd/perks/firework.sp"            // 35
 #include "rtd/perks/deadlyvoice.sp"         // 36
 #include "rtd/perks/stronggravity.sp"       // 37
@@ -63,7 +63,7 @@
 #include "rtd/perks/suffocation.sp"         // 42
 #include "rtd/perks/fasthands.sp"           // 43 $
 #include "rtd/perks/outline.sp"             // 44
-#include "rtd/perks/vital.sp"               // 45 $
+#include "rtd/perks/vital.sp"               // 45 —
 #include "rtd/perks/nogravity.sp"           // 46
 #include "rtd/perks/teamcriticals.sp"       // 47
 #include "rtd/perks/firetimebomb.sp"        // 48
@@ -71,10 +71,10 @@
 #include "rtd/perks/strongrecoil.sp"        // 50 —
 #include "rtd/perks/cursed.sp"              // 51
 #include "rtd/perks/extrathrowables.sp"     // 52
-#include "rtd/perks/powerplay.sp"           // 53 $
+#include "rtd/perks/powerplay.sp"           // 53
 #include "rtd/perks/explosivearrows.sp"     // 54
 #include "rtd/perks/inclineproblem.sp"      // 55
-#include "rtd/perks/springshoes.sp"         // 56 $
+#include "rtd/perks/springshoes.sp"         // 56
 #include "rtd/perks/lag.sp"                 // 57
 #include "rtd/perks/drugbullets.sp"         // 58
 #include "rtd/perks/longmelee.sp"           // 59 $

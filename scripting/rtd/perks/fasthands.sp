@@ -37,28 +37,28 @@ public void FastHands_ApplyPerk(const int client, const Perk perk)
 
 public void FastHands_RemovePerk(const int client, const RTDRemoveReason eRemoveReason)
 {
-	for (int i = 0; i < 3; ++i)
-	{
-		int iWeapon = GetPlayerWeaponSlot(client, i);
-		if (iWeapon <= MaxClients || !IsValidEntity(iWeapon))
-			continue;
+	//for (int i = 0; i < 3; ++i)
+	//{
+	//	int iWeapon = GetPlayerWeaponSlot(client, i);
+	//	if (iWeapon <= MaxClients || !IsValidEntity(iWeapon))
+	//		continue;
 
-		TF2Attrib_RemoveByDefIndex(iWeapon, Attribs.FireRate);
-		TF2Attrib_RemoveByDefIndex(iWeapon, Attribs.ReloadSpeed);
-	}
+	//	TF2Attrib_RemoveByDefIndex(iWeapon, Attribs.FireRate);
+	//	TF2Attrib_RemoveByDefIndex(iWeapon, Attribs.ReloadSpeed);
+	//}
 }
 
 public void FastHands_Apply(const int client)
 {
-	for (int i = 0; i < 3; ++i)
-	{
-		int iWeapon = GetPlayerWeaponSlot(client, i);
-		if (iWeapon <= MaxClients || !IsValidEntity(iWeapon))
-			continue;
+	//for (int i = 0; i < 3; ++i)
+	//{
+	//	int iWeapon = GetPlayerWeaponSlot(client, i);
+	//	if (iWeapon <= MaxClients || !IsValidEntity(iWeapon))
+	//		continue;
 
-		TF2Attrib_SetByDefIndex(iWeapon, Attribs.FireRate, Cache[client].Attack);
-		TF2Attrib_SetByDefIndex(iWeapon, Attribs.ReloadSpeed, Cache[client].Reload);
-	}
+	//	TF2Attrib_SetByDefIndex(iWeapon, Attribs.FireRate, Cache[client].Attack);
+	//	TF2Attrib_SetByDefIndex(iWeapon, Attribs.ReloadSpeed, Cache[client].Reload);
+	//}
 
 }
 

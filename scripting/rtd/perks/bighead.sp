@@ -23,6 +23,7 @@ DEFINE_CALL_APPLY_REMOVE(BigHead)
 public void BigHead_Init(const Perk perk)
 {
 	Events.OnPlayerRunCmd(perk, BigHead_OnPlayerRunCmd);
+	Events.OnSoundEx(perk, BigHead_OnSoundEx);
 }
 
 public void BigHead_ApplyPerk(const int client, const Perk perk)
@@ -31,18 +32,27 @@ public void BigHead_ApplyPerk(const int client, const Perk perk)
 
 	Cache[client].Scale = fScale;
 
-	TF2Attrib_SetByDefIndex(client, Attribs.VoicePitch, 1.0 / Min(fScale, 3.0));
+	//TF2Attrib_SetByDefIndex(client, Attribs.VoicePitch, 1.0 / Min(fScale, 3.0));
 }
 
 public void BigHead_RemovePerk(const int client, const RTDRemoveReason eRemoveReason)
 {
-	TF2Attrib_RemoveByDefIndex(client, Attribs.VoicePitch);
+	//TF2Attrib_RemoveByDefIndex(client, Attribs.VoicePitch);
 }
 
 bool BigHead_OnPlayerRunCmd(const int client, int& iButtons, float fVel[3], float fAng[3])
 {
 	SetEntPropFloat(client, Prop_Send, "m_flHeadScale", Cache[client].Scale);
 	return false;
+}
+
+bool BigHead_OnSoundEx(const int client, const char[] sSound, int& iChannel, float& fVol, int& iLevel, int& iPitch)
+{
+	if (strncmp(sSound, "vo/", 3, false) != 0)
+		return false;
+
+	iPitch = RoundToNearest(100.0 - (Min(Cache[client].Scale, 3.0) * 10.0));
+	return true;
 }
 
 #undef Scale

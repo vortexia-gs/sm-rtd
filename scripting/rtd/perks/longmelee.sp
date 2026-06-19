@@ -35,16 +35,16 @@ public void LongMelee_ApplyPerk(const int client, const Perk perk)
 
 public void LongMelee_RemovePerk(const int client, const RTDRemoveReason eRemoveReason)
 {
-	int iWeapon = GetPlayerWeaponSlot(client, 2);
-	if (iWeapon > MaxClients && IsValidEntity(iWeapon))
-		TF2Attrib_RemoveByDefIndex(iWeapon, Attribs.MeleeRange);
+	//int iWeapon = GetPlayerWeaponSlot(client, 2);
+	//if (iWeapon > MaxClients && IsValidEntity(iWeapon))
+		//TF2Attrib_RemoveByDefIndex(iWeapon, Attribs.MeleeRange);
 }
 
 void LongMelee_Apply(const int client)
 {
-	int iWeapon = GetPlayerWeaponSlot(client, 2);
-	if (iWeapon > MaxClients && IsValidEntity(iWeapon))
-		TF2Attrib_SetByDefIndex(iWeapon, Attribs.MeleeRange, Cache[client].Multiplier);
+	//int iWeapon = GetPlayerWeaponSlot(client, 2);
+	//if (iWeapon > MaxClients && IsValidEntity(iWeapon))
+		//TF2Attrib_SetByDefIndex(iWeapon, Attribs.MeleeRange, Cache[client].Multiplier);
 }
 
 public void LongMelee_OnDroppedWeaponSpawn(const int client, const int iEnt)

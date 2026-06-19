@@ -38,32 +38,32 @@ public void LowGravity_ApplyPerk(int client, Perk perk)
 	Cache[client].Gravity = GetEntityGravity(client);
 	Cache[client].MaxBoostSquared = fBaseSpeed * fBaseSpeed * 1.5;
 
-	if (Cache[client].JumpMode)
-	{
-		TF2Attrib_SetByDefIndex(client, Attribs.JumpHeight, 1.0 / fMultiplier);
-	}
-	else
-	{
+	//if (Cache[client].JumpMode)
+	//{
+	//	TF2Attrib_SetByDefIndex(client, Attribs.JumpHeight, 1.0 / fMultiplier);
+	//}
+	//else
+	//{
 		SetEntityGravity(client, fMultiplier);
-	}
+	//}
 
-	if (!Cache[client].FallDamage)
-		TF2Attrib_SetByDefIndex(client, Attribs.NoFallDamage, 1.0);
+	//if (!Cache[client].FallDamage)
+	//	TF2Attrib_SetByDefIndex(client, Attribs.NoFallDamage, 1.0);
 }
 
 public void LowGravity_RemovePerk(const int client, const RTDRemoveReason eRemoveReason)
 {
-	if (Cache[client].JumpMode)
-	{
-		TF2Attrib_RemoveByDefIndex(client, Attribs.JumpHeight);
-	}
-	else
-	{
+	//if (Cache[client].JumpMode)
+	//{
+	//	TF2Attrib_RemoveByDefIndex(client, Attribs.JumpHeight);
+	//}
+	//else
+	//{
 		SetEntityGravity(client, Cache[client].Gravity);
-	}
+	//}
 
-	if (!Cache[client].FallDamage)
-		TF2Attrib_RemoveByDefIndex(client, Attribs.NoFallDamage);
+	//if (!Cache[client].FallDamage)
+	//	TF2Attrib_RemoveByDefIndex(client, Attribs.NoFallDamage);
 }
 
 bool LowGravity_OnPlayerRunCmd(const int client, int& iButtons, float fVel[3], float fAng[3])

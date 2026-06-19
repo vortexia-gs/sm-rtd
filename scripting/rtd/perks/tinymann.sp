@@ -18,8 +18,15 @@
 
 #define SpeedBoost Int[0]
 #define BaseScale Float[0]
+#define Scale Float[1]
 
 DEFINE_CALL_APPLY_REMOVE(TinyMann)
+
+public void TinyMann_Init(const Perk perk)
+{
+	Events.OnPlayerRunCmd(perk, TinyMann_OnPlayerRunCmd);
+	Events.OnSoundEx(perk, TinyMann_OnSoundEx);
+}
 
 public void TinyMann_ApplyPerk(const int client, const Perk perk)
 {
@@ -27,8 +34,9 @@ public void TinyMann_ApplyPerk(const int client, const Perk perk)
 
 	Cache[client].SpeedBoost = perk.GetPrefCell("boost", 1);
 	Cache[client].BaseScale = GetEntPropFloat(client, Prop_Send, "m_flModelScale");
+	Cache[client].Scale = fScale;
 
-	TF2Attrib_SetByDefIndex(client, Attribs.VoicePitch, 1.0 / fScale / 2.0);
+	//TF2Attrib_SetByDefIndex(client, Attribs.VoicePitch, 1.0 / fScale / 2.0);
 	SetEntPropFloat(client, Prop_Send, "m_flModelScale", fScale);
 
 	if (Cache[client].SpeedBoost)
@@ -37,7 +45,7 @@ public void TinyMann_ApplyPerk(const int client, const Perk perk)
 
 public void TinyMann_RemovePerk(const int client, const RTDRemoveReason eRemoveReason)
 {
-	TF2Attrib_RemoveByDefIndex(client, Attribs.VoicePitch);
+	//TF2Attrib_RemoveByDefIndex(client, Attribs.VoicePitch);
 	SetEntPropFloat(client, Prop_Send, "m_flModelScale", Cache[client].BaseScale);
 
 	if (Cache[client].SpeedBoost)
@@ -46,5 +54,21 @@ public void TinyMann_RemovePerk(const int client, const RTDRemoveReason eRemoveR
 	FixPotentialStuck(client);
 }
 
+bool TinyMann_OnPlayerRunCmd(const int client, int& iButtons, float fVel[3], float fAng[3])
+{
+	SetEntPropFloat(client, Prop_Send, "m_flModelScale", Cache[client].Scale);
+	return false;
+}
+
+bool TinyMann_OnSoundEx(const int client, const char[] sSound, int& iChannel, float& fVol, int& iLevel, int& iPitch)
+{
+	if (strncmp(sSound, "vo/", 3, false) != 0)
+		return false;
+
+	iPitch = RoundToNearest(100.0 + (1.0 / Cache[client].Scale / 2.0 * 10.0));
+	return true;
+}
+
 #undef SpeedBoost
 #undef BaseScale
+#undef Scale

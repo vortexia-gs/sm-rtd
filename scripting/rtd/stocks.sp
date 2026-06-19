@@ -430,15 +430,17 @@ stock float GetCaptureValue(const int client)
 
 stock void ApplyPreventCapture(const int client)
 {
-	TF2Attrib_SetByDefIndex(client, 400, 1.0); // cannot pick up intel
-	TF2Attrib_SetByDefIndex(client, 68, -GetCaptureValue(client)); // balance capture value to 0
-	FakeClientCommandEx(client, "dropitem"); // in case intel is already picked up
+	//TF2Attrib_SetByDefIndex(client, 400, 1.0); // cannot pick up intel
+	//TF2Attrib_SetByDefIndex(client, 68, -GetCaptureValue(client)); // balance capture value to 0
+	//FakeClientCommandEx(client, "dropitem"); // in case intel is already picked up
+	LogStackTrace("WARNING: ApplyPreventCapture() is not implemented in the standalone branch of RTD");
 }
 
 stock void RemovePreventCapture(const int client)
 {
-	TF2Attrib_RemoveByDefIndex(client, 400);
-	TF2Attrib_RemoveByDefIndex(client, 68);
+	//TF2Attrib_RemoveByDefIndex(client, 400);
+	//TF2Attrib_RemoveByDefIndex(client, 68);
+	LogStackTrace("WARNING: RemovePreventCapture() is not implemented in the standalone branch of RTD");
 }
 
 stock int GetUniqueId(const int client, const int iOther)
@@ -1296,12 +1298,12 @@ stock void SetSpeed(int client, float fBase, float fMul=1.0)
 {
 	if (fMul == 1.0)
 	{
-		TF2Attrib_RemoveByDefIndex(client, 107);
+		//TF2Attrib_RemoveByDefIndex(client, 107);
 		SetEntPropFloat(client, Prop_Send, "m_flMaxspeed", fBase);
 	}
 	else
 	{
-		TF2Attrib_SetByDefIndex(client, 107, fMul);
+		//TF2Attrib_SetByDefIndex(client, 107, fMul);
 		SetEntPropFloat(client, Prop_Send, "m_flMaxspeed", fBase *fMul);
 	}
 }
@@ -1309,14 +1311,16 @@ stock void SetSpeed(int client, float fBase, float fMul=1.0)
 // calcualtes m_flMaxspeed itself, tad overkill for small, frequent updates (like drunkwalk)
 stock void SetSpeedEx(int client, float fMul=1.0)
 {
-	if (fMul == 1.0)
-	{
-		TF2Attrib_RemoveByDefIndex(client, 107);
-	}
-	else
-	{
-		TF2Attrib_SetByDefIndex(client, 107, fMul);
-	}
+	//if (fMul == 1.0)
+	//{
+	//	TF2Attrib_RemoveByDefIndex(client, 107);
+	//}
+	//else
+	//{
+	//	TF2Attrib_SetByDefIndex(client, 107, fMul);
+	//}
+
+	SetSpeed(client, GetBaseSpeed(client), fMul);
 
 	TriggerSpeedRecalc(client);
 }

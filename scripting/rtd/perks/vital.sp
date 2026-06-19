@@ -16,17 +16,29 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#define BaseMaxHealth Int[0]
+
 DEFINE_CALL_APPLY_REMOVE(Vital)
 
 public void Vital_ApplyPerk(const int client, const Perk perk)
 {
 	int iAddedHealth = perk.GetPrefCell("health", 300);
 
-	TF2Attrib_SetByDefIndex(client, Attribs.MaxHealth, float(iAddedHealth));
+	int iPlayerRes = GetPlayerResourceEntity();
+
+	Cache[client].BaseMaxHealth = GetEntProp(iPlayerRes, Prop_Send, "m_iMaxHealth", _, client);
+
+	SetEntProp(iPlayerRes, Prop_Send, "m_iMaxHealth", Cache[client].BaseMaxHealth + iAddedHealth, _, client);
+
+	//TF2Attrib_SetByDefIndex(client, Attribs.MaxHealth, float(iAddedHealth));
 	SetEntityHealth(client, GetClientHealth(client) + iAddedHealth);
 }
 
 public void Vital_RemovePerk(const int client, const RTDRemoveReason eRemoveReason)
 {
-	TF2Attrib_RemoveByDefIndex(client, Attribs.MaxHealth);
+	SetEntProp(GetPlayerResourceEntity(), Prop_Send, "m_iMaxHealth", Cache[client].BaseMaxHealth, _, client);
+
+	//TF2Attrib_RemoveByDefIndex(client, Attribs.MaxHealth);
 }
+
+#undef BaseMaxHealth

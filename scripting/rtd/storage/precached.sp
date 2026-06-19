@@ -366,7 +366,7 @@ enum struct TEParticlesLingeringCache
 	TEParticleLingeringId VortexBlue;
 	TEParticleLingeringId ElectricDischargePurple;
 	TEParticleLingeringId ElectricDischargeYellow;
-	TEParticleLingeringId RisingSparklesYellow;
+	//TEParticleLingeringId RisingSparklesYellow;
 	TEParticleLingeringId WhiteBodyHaze;
 	TEParticleLingeringId WhiteBodyLights;
 	TEParticleLingeringId IciclesBody;
@@ -402,7 +402,7 @@ enum struct TEParticlesLingeringCache
 		this.VortexBlue = this.AsId("utaunt_tarotcard_blue_wind");
 		this.ElectricDischargePurple = this.AsId("utaunt_electricity_purple_discharge");
 		this.ElectricDischargeYellow = this.AsId("utaunt_electricity_discharge");
-		this.RisingSparklesYellow = this.AsId("utaunt_arcane_yellow_sparkle");
+		//this.RisingSparklesYellow = this.AsId("utaunt_arcane_yellow_sparkle");
 		this.WhiteBodyHaze = this.AsId("utaunt_prismatichaze_haze");
 		this.WhiteBodyLights = this.AsId("burningplayer_rainbow_glow_white");
 		this.IciclesBody = this.AsId("utaunt_ice_icicles");

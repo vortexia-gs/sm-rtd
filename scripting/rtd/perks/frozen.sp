@@ -395,6 +395,12 @@ bool Frozen_OnSound(const int client, const char[] sSound)
 			iContextStart = 7;
 			iPitch = 120;
 		}
+
+		case TFClass_Civilian:
+		{
+			iContextStart = 12;
+			iPitch = 90;
+		}
 	}
 
 	if (strncmp(sSound[iContextStart], "HelpMe", 6) == 0)

@@ -23,18 +23,25 @@ DEFINE_CALL_APPLY_REMOVE(SpringShoes)
 public void SpringShoes_Init(const Perk perk)
 {
 	PrecacheSound(SPRING_JUMP);
+	Events.OnPlayerRunCmd(perk, SpringShoes_OnPlayerRunCmd);
 }
 
 public void SpringShoes_ApplyPerk(const int client, const Perk perk)
 {
-	TF2Attrib_SetByDefIndex(client, Attribs.PreventJump, 1.0);
+	//TF2Attrib_SetByDefIndex(client, Attribs.PreventJump, 1.0);
 
 	Cache[client].Repeat(0.25, SpringShoes_ForceJump);
 }
 
 public void SpringShoes_RemovePerk(const int client, const RTDRemoveReason eRemoveReason)
 {
-	TF2Attrib_RemoveByDefIndex(client, Attribs.PreventJump);
+	//TF2Attrib_RemoveByDefIndex(client, Attribs.PreventJump);
+}
+
+bool SpringShoes_OnPlayerRunCmd(const int client, int& iButtons, float fVel[3], float fAng[3])
+{
+	iButtons &= ~IN_JUMP;
+	return true;
 }
 
 

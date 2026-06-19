@@ -2,6 +2,8 @@
 
 This plugin was edited for use in the Vortexia servers. Patches were made to add support for [Team Fortress 2 Classified](https://tf2classified.com/), but not everything is fully functional.
 
+The standalone branch removes all references to TF2Attributes. Some perks were patched to accommodate for this, while others are nonfunctional and should therefore be disabled.
+
 # Roll The Dice Revamped
 
 Roll The Dice mod for Team Fortress 2. It allows players to "roll the dice" for one of 82 random effects, some good, some bad. The effect will be applied for its custom time to the player and removed afterwards.

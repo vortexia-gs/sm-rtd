@@ -34,22 +34,22 @@ public void PowerfulHits_ApplyPerk(const int client, const Perk perk)
 
 public void PowerfulHits_RemovePerk(const int client, const RTDRemoveReason eRemoveReason)
 {
-	for (int i = 0; i < 3; ++i)
-	{
-		int iWeapon = GetPlayerWeaponSlot(client, i);
-		if (iWeapon > MaxClients && IsValidEntity(iWeapon))
-			TF2Attrib_RemoveByDefIndex(iWeapon, Attribs.Damage);
-	}
+	//for (int i = 0; i < 3; ++i)
+	//{
+	//	int iWeapon = GetPlayerWeaponSlot(client, i);
+	//	if (iWeapon > MaxClients && IsValidEntity(iWeapon))
+	//		TF2Attrib_RemoveByDefIndex(iWeapon, Attribs.Damage);
+	//}
 }
 
 public void PowerfulHits_Apply(const int client)
 {
-	for (int i = 0; i < 3; ++i)
-	{
-		int iWeapon = GetPlayerWeaponSlot(client, i);
-		if (iWeapon > MaxClients && IsValidEntity(iWeapon))
-			TF2Attrib_SetByDefIndex(iWeapon, Attribs.Damage, Cache[client].Multiplier);
-	}
+	//for (int i = 0; i < 3; ++i)
+	//{
+	//	int iWeapon = GetPlayerWeaponSlot(client, i);
+	//	if (iWeapon > MaxClients && IsValidEntity(iWeapon))
+	//		TF2Attrib_SetByDefIndex(iWeapon, Attribs.Damage, Cache[client].Multiplier);
+	//}
 }
 
 public void PowerfulHits_OnDroppedWeaponSpawn(const int client, const int iEnt)
