@@ -55,7 +55,7 @@
 #include "rtd/perks/tinymann.sp"            // 34
 #include "rtd/perks/firework.sp"            // 35
 #include "rtd/perks/deadlyvoice.sp"         // 36
-#include "rtd/perks/stronggravity.sp"       // 37
+#include "rtd/perks/stronggravity.sp"       // 37 —
 #include "rtd/perks/eyeforaneye.sp"         // 38
 #include "rtd/perks/weakened.sp"            // 39
 #include "rtd/perks/necromash.sp"           // 40
@@ -64,7 +64,7 @@
 #include "rtd/perks/fasthands.sp"           // 43 $
 #include "rtd/perks/outline.sp"             // 44
 #include "rtd/perks/vital.sp"               // 45 —
-#include "rtd/perks/nogravity.sp"           // 46
+#include "rtd/perks/nogravity.sp"           // 46 —
 #include "rtd/perks/teamcriticals.sp"       // 47
 #include "rtd/perks/firetimebomb.sp"        // 48
 #include "rtd/perks/firebreath.sp"          // 49
@@ -82,9 +82,9 @@
 #include "rtd/perks/madaraswhistle.sp"      // 61
 #include "rtd/perks/sickness.sp"            // 62
 #include "rtd/perks/wastedroll.sp"          // 63
-#include "rtd/perks/mercsdietwice.sp"       // 64 $
-#include "rtd/perks/drunkwalk.sp"           // 65 $
-#include "rtd/perks/hellsreach.sp"          // 66 $
+#include "rtd/perks/mercsdietwice.sp"       // 64
+#include "rtd/perks/drunkwalk.sp"           // 65 —
+#include "rtd/perks/hellsreach.sp"          // 66 —
 #include "rtd/perks/cursedprojectiles.sp"   // 67
 #include "rtd/perks/vampire.sp"             // 68
 #include "rtd/perks/batswarm.sp"            // 69 $
